@@ -56,7 +56,7 @@ export default function HomePage() {
         {/* Specializations Section */}
         <SpecializationsSection />
 
-        {/* Features Section */}
+        {/* Features Section with Magic Bento */}
         <FeaturesSection />
 
         {/* About Section */}

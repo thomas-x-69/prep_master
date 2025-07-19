@@ -2,28 +2,23 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { FeatureCard } from "@/components/ui/card";
+import MagicBento from "@/components/MagicBento";
 import {
   Brain,
   Target,
   Users,
   Trophy,
   Zap,
-  Shield,
   TrendingUp,
   BookOpen,
-  Code,
   Smartphone,
-  Globe,
-  Sparkles,
-  CheckCircle,
-  Clock,
-  Star,
   Play,
   Award,
   MessageSquare,
-  FileText,
   Timer,
+  CheckCircle,
+  Star,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,75 +26,68 @@ const FeaturesSection = ({ className }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const mainFeatures = [
+  // Main feature cards data - focused and compact
+  const featureCards = [
     {
-      id: "adaptive-learning",
-      title: "Adaptive Learning System",
-      description:
-        "AI-powered system that adapts to your learning pace and identifies weak areas for targeted practice.",
-      icon: <Brain className="h-6 w-6" />,
-      highlight: true,
-      stats: { value: "95%", label: "Improvement Rate" },
-    },
-    {
-      id: "mock-interviews",
       title: "Realistic Mock Interviews",
       description:
         "Practice with industry-standard interview formats and get instant feedback from our AI interviewer.",
       icon: <MessageSquare className="h-6 w-6" />,
-      highlight: false,
-      stats: { value: "1000+", label: "Mock Sessions Daily" },
+      badge: "Live Practice",
+      color: "rgba(255, 255, 255, 0.05)",
+      stats: { value: "1000+", label: "Daily Sessions" },
+      gradient: "from-blue-500/20 to-cyan-500/20",
     },
     {
-      id: "performance-tracking",
-      title: "Detailed Performance Analytics",
-      description:
-        "Track your progress with comprehensive analytics and personalized recommendations for improvement.",
-      icon: <TrendingUp className="h-6 w-6" />,
-      highlight: false,
-      stats: { value: "Real-time", label: "Progress Updates" },
-    },
-    {
-      id: "expert-content",
       title: "Expert-Curated Content",
       description:
-        "Learn from industry professionals with content reviewed and updated by engineers from top tech companies.",
+        "Learn from industry professionals with content reviewed by engineers from top tech companies.",
       icon: <Award className="h-6 w-6" />,
-      highlight: true,
+      badge: "Premium",
+      color: "rgba(255, 255, 255, 0.05)",
       stats: { value: "500+", label: "Expert Contributors" },
-    },
-  ];
-
-  const supportFeatures = [
-    {
-      title: "Timed Practice Sessions",
-      description: "Simulate real exam conditions with timed coding challenges",
-      icon: <Timer className="h-5 w-5" />,
+      gradient: "from-yellow-500/20 to-orange-500/20",
     },
     {
-      title: "Community Forum",
-      description: "Connect with peers and get help from experienced mentors",
-      icon: <Users className="h-5 w-5" />,
+      title: "25,000+ Questions",
+      description:
+        "Massive question bank covering all difficulty levels from beginner to expert across multiple programming languages and topics.",
+      icon: <BookOpen className="h-6 w-6" />,
+      badge: "Massive Bank",
+      color: "rgba(255, 255, 255, 0.05)",
+      stats: { value: "25K+", label: "Questions Available" },
+      gradient: "from-red-500/20 to-rose-500/20",
     },
     {
-      title: "Mobile App",
-      description: "Practice anywhere with our mobile-optimized platform",
-      icon: <Smartphone className="h-5 w-5" />,
+      title: "Difficulty Levels & Timing",
+      description:
+        "Questions categorized by Easy, Medium, Hard, and Expert levels with accurate time estimates for realistic practice.",
+      icon: <Timer className="h-6 w-6" />,
+      badge: "Structured",
+      color: "rgba(255, 255, 255, 0.05)",
+      stats: { value: "4", label: "Difficulty Levels" },
+      gradient: "from-indigo-500/20 to-purple-500/20",
     },
     {
-      title: "Study Plans",
-      description: "Structured learning paths tailored to your timeline",
-      icon: <BookOpen className="h-5 w-5" />,
+      title: "Topic-Based Review",
+      description:
+        "Comprehensive review system organized by topics, algorithms, data structures, and company-specific question patterns.",
+      icon: <Target className="h-6 w-6" />,
+      badge: "Organized",
+      color: "rgba(255, 255, 255, 0.05)",
+      stats: { value: "50+", label: "Topic Categories" },
+      gradient: "from-teal-500/20 to-blue-500/20",
     },
     {
-      title: "Video Solutions",
-      description: "Comprehensive video explanations for complex problems",
-      icon: <Play className="h-5 w-5" />,
-    },
-    {
-      title: "Interview Scheduling",
-      description: "Book mock interviews with industry professionals",
-      icon: <Target className="h-5 w-5" />,
+      title: "Adaptive Learning System",
+      description:
+        "AI-powered system that adapts to your learning pace and identifies weak areas for targeted practice.",
+      icon: <Brain className="h-6 w-6" />,
+      badge: "Coming Soon",
+      color: "rgba(255, 255, 255, 0.05)",
+      stats: { value: "AI", label: "Powered Learning" },
+      gradient: "from-purple-500/20 to-pink-500/20",
+      comingSoon: true,
     },
   ];
 
@@ -172,112 +160,27 @@ const FeaturesSection = ({ className }) => {
           </motion.div>
         </div>
 
-        {/* Main Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          {mainFeatures.map((feature, index) => (
-            <motion.div
-              key={feature.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-            >
-              <FeatureCard
-                variant={feature.highlight ? "neon" : "glass"}
-                className={cn(
-                  "group relative overflow-hidden h-full",
-                  feature.highlight && "border-yellow-400/30"
-                )}
-                highlight={feature.highlight}
-              >
-                <div className="relative z-10 p-6 lg:p-8 h-full flex flex-col">
-                  {/* Icon & Title */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className={cn(
-                        "p-3 rounded-xl transition-all duration-300 group-hover:scale-110",
-                        feature.highlight
-                          ? "bg-yellow-400 text-black"
-                          : "bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black"
-                      )}
-                    >
-                      {feature.icon}
-                    </div>
-
-                    {feature.highlight && (
-                      <div className="px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
-                        Featured
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 space-y-4">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-
-                    <p className="text-gray-300 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="mt-6 pt-6 border-t border-white/10">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-2xl font-bold text-yellow-400">
-                          {feature.stats.value}
-                        </div>
-                        <div className="text-sm text-gray-400">
-                          {feature.stats.label}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </FeatureCard>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Support Features Grid */}
+        {/* Magic Bento Grid */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {supportFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              >
-                <FeatureCard
-                  variant="glass"
-                  className="group text-left hover:border-white/30 transition-all duration-300"
-                >
-                  <div className="p-6 space-y-4">
-                    <div className="p-2 rounded-lg bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300 w-fit">
-                      {feature.icon}
-                    </div>
-
-                    <h4 className="text-lg font-semibold text-white">
-                      {feature.title}
-                    </h4>
-
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </FeatureCard>
-              </motion.div>
-            ))}
+          <div className="relative">
+            <MagicBento
+              cardData={featureCards}
+              textAutoHide={false}
+              enableStars={true}
+              enableSpotlight={false}
+              enableBorderGlow={true}
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect={true}
+              spotlightRadius={350}
+              particleCount={6}
+              glowColor="255, 226, 77"
+            />
           </div>
         </motion.div>
 
@@ -285,10 +188,10 @@ const FeaturesSection = ({ className }) => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center"
         >
-          <div className="glass rounded-2xl p-8 lg:p-12 border border-white/10">
+          <div className="glass rounded-2xl p-8 lg:p-12 border border-white/10 backdrop-blur-lg">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-8">
               Trusted by Top Performers
             </h3>
@@ -299,11 +202,11 @@ const FeaturesSection = ({ className }) => {
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                  className="text-center"
+                  transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
+                  className="text-center group"
                 >
                   <div className="flex justify-center mb-3">
-                    <div className="p-3 rounded-full bg-yellow-400/20 text-yellow-400">
+                    <div className="p-3 rounded-full bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
                       {stat.icon}
                     </div>
                   </div>
@@ -314,6 +217,18 @@ const FeaturesSection = ({ className }) => {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="mt-8 pt-8 border-t border-white/10"
+            >
+              <p className="text-lg text-gray-300 italic">
+                "Join thousands of successful candidates who've accelerated
+                their careers with PrepMaster"
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>
