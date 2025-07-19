@@ -46,7 +46,7 @@ export default function HomePage() {
       <GSAPProvider />
 
       {/* Navigation */}
-      <Navigation />
+      <Navigation className={"ml-[20%]"} />
 
       {/* Main Content */}
       <main id="main-content" className="relative">
@@ -87,7 +87,7 @@ function AboutSection() {
             >
               Empowering The Next Generation of
               <br />
-              <span className="text-gradient">Tech Leaders</span>
+              <span className="text-gradient">Tech Professionals</span>
             </motion.h2>
 
             <motion.p
@@ -96,10 +96,10 @@ function AboutSection() {
               transition={{ delay: 0.4 }}
               className="text-xl text-gray-300 leading-relaxed"
             >
-              At Nexora, we believe that the future belongs to those who never
-              stop learning. Our mission is to democratize access to
-              cutting-edge technology solutions and empower organizations to
-              master the systems that drive innovation.
+              At PrepMaster, we believe that preparation is the key to success.
+              Our mission is to provide the most comprehensive and effective
+              preparation platform for technical interviews, coding assessments,
+              and career advancement in the technology industry.
             </motion.p>
 
             <motion.div
@@ -112,20 +112,31 @@ function AboutSection() {
                 <div className="text-4xl font-bold text-yellow-400 mb-2">
                   5+
                 </div>
-                <div className="text-gray-300">Years of Innovation</div>
+                <div className="text-gray-300">Years Perfecting Prep</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-yellow-400 mb-2">
-                  50+
+                  50K+
                 </div>
-                <div className="text-gray-300">Expert Solutions</div>
+                <div className="text-gray-300">Successful Placements</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-yellow-400 mb-2">
-                  95%
+                  98%
                 </div>
-                <div className="text-gray-300">Success Rate</div>
+                <div className="text-gray-300">Pass Rate</div>
               </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="pt-8"
+            >
+              <p className="text-lg text-gray-400 italic">
+                "The smartest way to navigate your tech career future"
+              </p>
             </motion.div>
           </div>
         </div>

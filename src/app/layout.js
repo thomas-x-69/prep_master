@@ -10,7 +10,7 @@ const inter = Inter({
 
 export const metadata = generateMetadata(
   "PrepMaster - The Smartest Way To Navigate The Future",
-  "Harness intelligent systems to optimize, predict, and scale—seamlessly. Master the skills that matter with our cutting-edge learning platform for Frontend, Backend, Mobile, and AI development.",
+  "Master technical interviews, ace coding exams, and prepare for your dream tech career—seamlessly. The comprehensive platform for tech preparation and career advancement.",
   "/images/og-image.jpg",
   "https://prepmaster.dev"
 );
@@ -22,11 +22,13 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FFE24D" />
 
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -39,6 +41,16 @@ export default function RootLayout({ children }) {
           href="/videos/hero-bg.mp4"
           as="video"
           type="video/mp4"
+        />
+        <link
+          rel="preload"
+          href="/images/logo.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap"
+          rel="stylesheet"
         />
 
         {/* SEO and Social Media Tags */}
@@ -53,6 +65,12 @@ export default function RootLayout({ children }) {
         <meta name="creator" content="PrepMaster" />
         <meta name="publisher" content="PrepMaster" />
         <meta name="format-detection" content="telephone=no" />
+
+        {/* Keywords for SEO */}
+        <meta
+          name="keywords"
+          content="technical interviews, coding challenges, interview preparation, tech careers, programming practice, coding assessments, system design, algorithms, data structures, software engineering"
+        />
 
         {/* Open Graph Tags */}
         <meta property="og:site_name" content="PrepMaster" />
@@ -84,7 +102,7 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               name: "PrepMaster",
               description:
-                "The smartest way to navigate the future of technology. Master Frontend, Backend, Mobile, and AI development with our cutting-edge learning platform.",
+                "The smartest way to navigate the future of your tech career. Master technical interviews, coding assessments, and career preparation with our comprehensive platform.",
               url: "https://prepmaster.dev",
               logo: "https://prepmaster.dev/images/logo.svg",
               foundingDate: "2024",
@@ -105,16 +123,26 @@ export default function RootLayout({ children }) {
                 "https://twitter.com/prepmaster",
                 "https://linkedin.com/company/prepmaster",
               ],
-              offers: {
-                "@type": "EducationalOccupationalCredential",
-                name: "Technology Skills Certification",
-                description:
-                  "Comprehensive certification programs in Frontend, Backend, Mobile, and AI development",
-                provider: {
-                  "@type": "Organization",
-                  name: "PrepMaster",
+              offers: [
+                {
+                  "@type": "Service",
+                  name: "Technical Interview Preparation",
+                  description:
+                    "Comprehensive technical interview preparation with mock interviews and expert feedback",
                 },
-              },
+                {
+                  "@type": "Service",
+                  name: "Coding Assessment Training",
+                  description:
+                    "Practice coding assessments with real-world challenges and performance analytics",
+                },
+                {
+                  "@type": "Service",
+                  name: "Career Advancement Coaching",
+                  description:
+                    "Expert guidance for tech career growth and skill development",
+                },
+              ],
             }),
           }}
         />
@@ -126,7 +154,7 @@ export default function RootLayout({ children }) {
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-primary text-black px-4 py-2 rounded-lg font-medium z-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium z-50"
         >
           Skip to main content
         </a>
@@ -160,24 +188,18 @@ export default function RootLayout({ children }) {
               window.addEventListener('unhandledrejection', function(e) {
                 console.error('Unhandled promise rejection:', e.reason);
               });
+
+              // Video preload optimization
+              window.addEventListener('DOMContentLoaded', function() {
+                const video = document.querySelector('video[src*="hero-bg"]');
+                if (video) {
+                  video.preload = 'auto';
+                  video.load();
+                }
+              });
             `,
           }}
         />
-
-        {/* Development tools - only in development */}
-        {process.env.NODE_ENV === "development" && (
-          <div className="fixed bottom-4 left-4 z-50 opacity-30 hover:opacity-100 transition-opacity">
-            <div className="bg-black/80 text-white text-xs px-2 py-1 rounded">
-              <div>DEV MODE</div>
-              <div className="block sm:hidden">Mobile</div>
-              <div className="hidden sm:block md:hidden">Tablet</div>
-              <div className="hidden md:block lg:hidden">Desktop SM</div>
-              <div className="hidden lg:block xl:hidden">Desktop MD</div>
-              <div className="hidden xl:block 2xl:hidden">Desktop LG</div>
-              <div className="hidden 2xl:block">Desktop XL</div>
-            </div>
-          </div>
-        )}
       </body>
     </html>
   );

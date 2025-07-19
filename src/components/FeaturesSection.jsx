@@ -19,6 +19,11 @@ import {
   CheckCircle,
   Clock,
   Star,
+  Play,
+  Award,
+  MessageSquare,
+  FileText,
+  Timer,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,99 +33,96 @@ const FeaturesSection = ({ className }) => {
 
   const mainFeatures = [
     {
-      id: "ai-powered",
-      title: "AI-Powered Intelligence",
+      id: "adaptive-learning",
+      title: "Adaptive Learning System",
       description:
-        "Advanced algorithms that learn from your data patterns to provide predictive insights and automated solutions.",
+        "AI-powered system that adapts to your learning pace and identifies weak areas for targeted practice.",
       icon: <Brain className="h-6 w-6" />,
       highlight: true,
-      stats: { value: "94%", label: "Accuracy Rate" },
+      stats: { value: "95%", label: "Improvement Rate" },
     },
     {
-      id: "real-time",
-      title: "Real-Time Processing",
+      id: "mock-interviews",
+      title: "Realistic Mock Interviews",
       description:
-        "Lightning-fast data processing and analysis that delivers insights when you need them most.",
-      icon: <Zap className="h-6 w-6" />,
+        "Practice with industry-standard interview formats and get instant feedback from our AI interviewer.",
+      icon: <MessageSquare className="h-6 w-6" />,
       highlight: false,
-      stats: { value: "<1ms", label: "Response Time" },
+      stats: { value: "1000+", label: "Mock Sessions Daily" },
     },
     {
-      id: "scalable",
-      title: "Infinite Scalability",
+      id: "performance-tracking",
+      title: "Detailed Performance Analytics",
       description:
-        "Infrastructure that grows with your business, from startup to enterprise scale without limits.",
+        "Track your progress with comprehensive analytics and personalized recommendations for improvement.",
       icon: <TrendingUp className="h-6 w-6" />,
       highlight: false,
-      stats: { value: "99.9%", label: "Uptime SLA" },
+      stats: { value: "Real-time", label: "Progress Updates" },
     },
     {
-      id: "security",
-      title: "Enterprise Security",
+      id: "expert-content",
+      title: "Expert-Curated Content",
       description:
-        "Bank-grade security protocols and compliance standards to protect your most valuable data.",
-      icon: <Shield className="h-6 w-6" />,
+        "Learn from industry professionals with content reviewed and updated by engineers from top tech companies.",
+      icon: <Award className="h-6 w-6" />,
       highlight: true,
-      stats: { value: "SOC2", label: "Certified" },
+      stats: { value: "500+", label: "Expert Contributors" },
     },
   ];
 
   const supportFeatures = [
     {
-      title: "Global Deployment",
-      description:
-        "Deploy anywhere in the world with our global infrastructure",
-      icon: <Globe className="h-5 w-5" />,
+      title: "Timed Practice Sessions",
+      description: "Simulate real exam conditions with timed coding challenges",
+      icon: <Timer className="h-5 w-5" />,
     },
     {
-      title: "24/7 Support",
-      description:
-        "Round-the-clock expert support for mission-critical operations",
+      title: "Community Forum",
+      description: "Connect with peers and get help from experienced mentors",
       icon: <Users className="h-5 w-5" />,
     },
     {
-      title: "API Integration",
-      description: "Seamless integration with existing systems and workflows",
-      icon: <Code className="h-5 w-5" />,
-    },
-    {
-      title: "Mobile Ready",
-      description: "Access your insights from any device, anywhere, anytime",
+      title: "Mobile App",
+      description: "Practice anywhere with our mobile-optimized platform",
       icon: <Smartphone className="h-5 w-5" />,
     },
     {
-      title: "Documentation",
-      description:
-        "Comprehensive guides and resources for rapid implementation",
+      title: "Study Plans",
+      description: "Structured learning paths tailored to your timeline",
       icon: <BookOpen className="h-5 w-5" />,
     },
     {
-      title: "Success Stories",
-      description: "Proven results across industries and use cases",
-      icon: <Trophy className="h-5 w-5" />,
+      title: "Video Solutions",
+      description: "Comprehensive video explanations for complex problems",
+      icon: <Play className="h-5 w-5" />,
+    },
+    {
+      title: "Interview Scheduling",
+      description: "Book mock interviews with industry professionals",
+      icon: <Target className="h-5 w-5" />,
     },
   ];
 
   const testimonialStats = [
     {
-      value: "99%",
-      label: "Customer Satisfaction",
-      icon: <Star className="h-5 w-5" />,
+      value: "98%",
+      label: "Pass Rate",
+      icon: <CheckCircle className="h-5 w-5" />,
     },
     {
-      value: "50%",
-      label: "Cost Reduction",
-      icon: <TrendingUp className="h-5 w-5" />,
+      value: "87%",
+      label: "Job Offer Rate",
+      icon: <Trophy className="h-5 w-5" />,
     },
     {
-      value: "10x",
-      label: "Performance Boost",
+      value: "2x",
+      label: "Faster Preparation",
       icon: <Zap className="h-5 w-5" />,
     },
     {
-      value: "24/7",
-      label: "Monitoring",
-      icon: <Clock className="h-5 w-5" />,
+      value: "50K+",
+      label: "Success Stories",
+      icon: <Star className="h-5 w-5" />,
     },
   ];
 
@@ -153,18 +155,19 @@ const FeaturesSection = ({ className }) => {
           >
             <span className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 text-sm text-yellow-400 font-medium">
               <Sparkles className="h-4 w-4" />
-              <span>Technology Features</span>
+              <span>Platform Features</span>
             </span>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-              Built For The
+              Built For Your
               <br />
-              <span className="text-gradient">Future Of Work</span>
+              <span className="text-gradient">Success Journey</span>
             </h2>
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Our platform combines cutting-edge technology with proven
-              methodologies to deliver solutions that scale with your ambitions.
+              Our comprehensive platform combines cutting-edge technology with
+              proven methodologies to deliver the most effective preparation
+              experience.
             </p>
           </motion.div>
         </div>
@@ -287,7 +290,7 @@ const FeaturesSection = ({ className }) => {
         >
           <div className="glass rounded-2xl p-8 lg:p-12 border border-white/10">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-8">
-              Trusted by Industry Leaders
+              Trusted by Top Performers
             </h3>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

@@ -52,6 +52,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        fontFamily: {
+          playfair: ['"Playfair Display"', "serif"],
+        },
         // Custom Nexora brand colors
         brand: {
           primary: "#FFE24D", // Yellow accent
