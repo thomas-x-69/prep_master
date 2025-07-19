@@ -3,7 +3,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FeatureCard } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Brain,
   Target,
@@ -17,12 +16,10 @@ import {
   Smartphone,
   Globe,
   Sparkles,
-  ArrowRight,
   CheckCircle,
   Clock,
   Star,
 } from "lucide-react";
-import { useScrollTrigger, useGSAP } from "@/hooks/useGSAP";
 import { cn } from "@/lib/utils";
 
 const FeaturesSection = ({ className }) => {
@@ -32,143 +29,100 @@ const FeaturesSection = ({ className }) => {
   const mainFeatures = [
     {
       id: "ai-powered",
-      title: "AI-Powered Learning",
+      title: "AI-Powered Intelligence",
       description:
-        "Personalized curriculum that adapts to your learning style and pace for maximum efficiency.",
+        "Advanced algorithms that learn from your data patterns to provide predictive insights and automated solutions.",
       icon: <Brain className="h-6 w-6" />,
       highlight: true,
-      stats: { value: "94%", label: "Faster Learning" },
+      stats: { value: "94%", label: "Accuracy Rate" },
     },
     {
-      id: "hands-on",
-      title: "Hands-On Projects",
+      id: "real-time",
+      title: "Real-Time Processing",
       description:
-        "Build real-world applications and create a portfolio that showcases your skills to employers.",
-      icon: <Code className="h-6 w-6" />,
+        "Lightning-fast data processing and analysis that delivers insights when you need them most.",
+      icon: <Zap className="h-6 w-6" />,
       highlight: false,
-      stats: { value: "200+", label: "Project Templates" },
+      stats: { value: "<1ms", label: "Response Time" },
     },
     {
-      id: "mentorship",
-      title: "Expert Mentorship",
+      id: "scalable",
+      title: "Infinite Scalability",
       description:
-        "Get guidance from industry professionals and receive personalized feedback on your progress.",
-      icon: <Users className="h-6 w-6" />,
+        "Infrastructure that grows with your business, from startup to enterprise scale without limits.",
+      icon: <TrendingUp className="h-6 w-6" />,
       highlight: false,
-      stats: { value: "50+", label: "Expert Mentors" },
+      stats: { value: "99.9%", label: "Uptime SLA" },
     },
     {
-      id: "certification",
-      title: "Industry Certifications",
+      id: "security",
+      title: "Enterprise Security",
       description:
-        "Earn recognized certifications that validate your skills and boost your career prospects.",
-      icon: <Trophy className="h-6 w-6" />,
+        "Bank-grade security protocols and compliance standards to protect your most valuable data.",
+      icon: <Shield className="h-6 w-6" />,
       highlight: true,
-      stats: { value: "15+", label: "Cert Partners" },
+      stats: { value: "SOC2", label: "Certified" },
     },
   ];
 
   const supportFeatures = [
     {
-      title: "Lightning Fast",
-      description: "Optimized platform for seamless learning experience",
-      icon: <Zap className="h-5 w-5" />,
-    },
-    {
-      title: "Secure & Private",
+      title: "Global Deployment",
       description:
-        "Your data and progress are protected with enterprise-grade security",
-      icon: <Shield className="h-5 w-5" />,
-    },
-    {
-      title: "Progress Tracking",
-      description: "Detailed analytics to monitor your learning journey",
-      icon: <TrendingUp className="h-5 w-5" />,
-    },
-    {
-      title: "Mobile Ready",
-      description: "Learn anywhere, anytime with our mobile-optimized platform",
-      icon: <Smartphone className="h-5 w-5" />,
-    },
-    {
-      title: "Global Community",
-      description: "Connect with learners and professionals worldwide",
+        "Deploy anywhere in the world with our global infrastructure",
       icon: <Globe className="h-5 w-5" />,
     },
     {
-      title: "Rich Resources",
-      description: "Access to comprehensive libraries and documentation",
+      title: "24/7 Support",
+      description:
+        "Round-the-clock expert support for mission-critical operations",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      title: "API Integration",
+      description: "Seamless integration with existing systems and workflows",
+      icon: <Code className="h-5 w-5" />,
+    },
+    {
+      title: "Mobile Ready",
+      description: "Access your insights from any device, anywhere, anytime",
+      icon: <Smartphone className="h-5 w-5" />,
+    },
+    {
+      title: "Documentation",
+      description:
+        "Comprehensive guides and resources for rapid implementation",
       icon: <BookOpen className="h-5 w-5" />,
+    },
+    {
+      title: "Success Stories",
+      description: "Proven results across industries and use cases",
+      icon: <Trophy className="h-5 w-5" />,
     },
   ];
 
   const testimonialStats = [
     {
-      value: "98%",
-      label: "Completion Rate",
-      icon: <CheckCircle className="h-5 w-5" />,
-    },
-    {
-      value: "4.9",
-      label: "Average Rating",
+      value: "99%",
+      label: "Customer Satisfaction",
       icon: <Star className="h-5 w-5" />,
     },
     {
-      value: "72h",
-      label: "Avg. Time to Job",
-      icon: <Clock className="h-5 w-5" />,
-    },
-    {
-      value: "$85K",
-      label: "Avg. Salary Boost",
+      value: "50%",
+      label: "Cost Reduction",
       icon: <TrendingUp className="h-5 w-5" />,
     },
-  ];
-
-  const { animate } = useGSAP();
-
-  // GSAP ScrollTrigger animation
-  const animationRef = useScrollTrigger(
-    () => {
-      const tl = animate.timeline();
-
-      tl.from(".feature-title", {
-        y: 80,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      })
-        .from(
-          ".feature-main-card",
-          {
-            y: 100,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .from(
-          ".feature-support-card",
-          {
-            y: 60,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-          },
-          "-=0.3"
-        );
-
-      return tl;
+    {
+      value: "10x",
+      label: "Performance Boost",
+      icon: <Zap className="h-5 w-5" />,
     },
     {
-      trigger: sectionRef.current,
-      start: "top 80%",
-      end: "bottom 20%",
-    }
-  );
+      value: "24/7",
+      label: "Monitoring",
+      icon: <Clock className="h-5 w-5" />,
+    },
+  ];
 
   return (
     <section
@@ -181,11 +135,11 @@ const FeaturesSection = ({ className }) => {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
 
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,226,77,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,226,77,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,226,77,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,226,77,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
@@ -195,23 +149,22 @@ const FeaturesSection = ({ className }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="feature-title space-y-6"
+            className="space-y-6"
           >
-            <span className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 text-sm text-brand-primary font-medium">
+            <span className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 text-sm text-yellow-400 font-medium">
               <Sparkles className="h-4 w-4" />
-              <span>Platform Features</span>
+              <span>Technology Features</span>
             </span>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-              Everything You Need To
+              Built For The
               <br />
-              <span className="text-gradient">Succeed & Excel</span>
+              <span className="text-gradient">Future Of Work</span>
             </h2>
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Our comprehensive platform combines cutting-edge technology with
-              proven learning methodologies to accelerate your professional
-              growth.
+              Our platform combines cutting-edge technology with proven
+              methodologies to deliver solutions that scale with your ambitions.
             </p>
           </motion.div>
         </div>
@@ -224,13 +177,12 @@ const FeaturesSection = ({ className }) => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="feature-main-card"
             >
               <FeatureCard
                 variant={feature.highlight ? "neon" : "glass"}
                 className={cn(
                   "group relative overflow-hidden h-full",
-                  feature.highlight && "border-brand-primary/30"
+                  feature.highlight && "border-yellow-400/30"
                 )}
                 highlight={feature.highlight}
               >
@@ -241,23 +193,23 @@ const FeaturesSection = ({ className }) => {
                       className={cn(
                         "p-3 rounded-xl transition-all duration-300 group-hover:scale-110",
                         feature.highlight
-                          ? "bg-brand-primary text-black"
-                          : "bg-brand-primary/20 text-brand-primary group-hover:bg-brand-primary group-hover:text-black"
+                          ? "bg-yellow-400 text-black"
+                          : "bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black"
                       )}
                     >
                       {feature.icon}
                     </div>
 
                     {feature.highlight && (
-                      <div className="px-3 py-1 bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-bold rounded-full">
-                        Most Popular
+                      <div className="px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
+                        Featured
                       </div>
                     )}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 space-y-4">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-primary transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
                       {feature.title}
                     </h3>
 
@@ -270,28 +222,19 @@ const FeaturesSection = ({ className }) => {
                   <div className="mt-6 pt-6 border-t border-white/10">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-2xl font-bold text-brand-primary">
+                        <div className="text-2xl font-bold text-yellow-400">
                           {feature.stats.value}
                         </div>
                         <div className="text-sm text-gray-400">
                           {feature.stats.label}
                         </div>
                       </div>
-
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-brand-primary hover:bg-brand-primary hover:text-black group"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
                     </div>
                   </div>
                 </div>
 
                 {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </FeatureCard>
             </motion.div>
           ))}
@@ -311,14 +254,13 @@ const FeaturesSection = ({ className }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                className="feature-support-card"
               >
                 <FeatureCard
                   variant="glass"
                   className="group text-left hover:border-white/30 transition-all duration-300"
                 >
                   <div className="p-6 space-y-4">
-                    <div className="p-2 rounded-lg bg-brand-primary/20 text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-all duration-300 w-fit">
+                    <div className="p-2 rounded-lg bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300 w-fit">
                       {feature.icon}
                     </div>
 
@@ -343,7 +285,7 @@ const FeaturesSection = ({ className }) => {
           transition={{ duration: 0.8, delay: 1.0 }}
           className="text-center"
         >
-          <div className="glass rounded-2xl p-8 lg:p-12 border border-white/10 mb-12">
+          <div className="glass rounded-2xl p-8 lg:p-12 border border-white/10">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-8">
               Trusted by Industry Leaders
             </h3>
@@ -358,7 +300,7 @@ const FeaturesSection = ({ className }) => {
                   className="text-center"
                 >
                   <div className="flex justify-center mb-3">
-                    <div className="p-3 rounded-full bg-brand-primary/20 text-brand-primary">
+                    <div className="p-3 rounded-full bg-yellow-400/20 text-yellow-400">
                       {stat.icon}
                     </div>
                   </div>
@@ -368,32 +310,6 @@ const FeaturesSection = ({ className }) => {
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               ))}
-            </div>
-          </div>
-
-          {/* Final CTA */}
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white">
-              Start Your Learning Journey Today
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Join the community of forward-thinking professionals who are
-              shaping the future of technology
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="brand"
-                size="xl"
-                className="font-bold group"
-                icon={<Target className="h-5 w-5" />}
-              >
-                Start Free Trial
-              </Button>
-
-              <Button variant="brand-glass" size="xl" className="font-medium">
-                Schedule Demo
-              </Button>
             </div>
           </div>
         </motion.div>

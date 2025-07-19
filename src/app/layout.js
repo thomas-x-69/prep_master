@@ -9,10 +9,10 @@ const inter = Inter({
 });
 
 export const metadata = generateMetadata(
-  "PrepMaster - The Smartest Way To Navigate The Future",
-  "Harness intelligent systems to optimize, predict, and scale—seamlessly. Master the skills that matter with our cutting-edge learning platform for Frontend, Backend, Mobile, and AI development.",
+  "Nexora - The Smartest Way To Navigate The Future",
+  "Harness intelligent systems to optimize, predict, and scale—seamlessly. Advanced AI-driven solutions for modern enterprises seeking to transform their operations and unlock unprecedented growth.",
   "/images/og-image.jpg",
-  "https://prepmaster.dev"
+  "https://nexora.ai"
 );
 
 export default function RootLayout({ children }) {
@@ -49,28 +49,28 @@ export default function RootLayout({ children }) {
         />
 
         {/* Additional Meta Tags */}
-        <meta name="author" content="PrepMaster Team" />
-        <meta name="creator" content="PrepMaster" />
-        <meta name="publisher" content="PrepMaster" />
+        <meta name="author" content="Nexora Team" />
+        <meta name="creator" content="Nexora" />
+        <meta name="publisher" content="Nexora" />
         <meta name="format-detection" content="telephone=no" />
 
         {/* Open Graph Tags */}
-        <meta property="og:site_name" content="PrepMaster" />
+        <meta property="og:site_name" content="Nexora" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}
-        <meta name="twitter:creator" content="@prepmaster" />
-        <meta name="twitter:site" content="@prepmaster" />
+        <meta name="twitter:creator" content="@nexora" />
+        <meta name="twitter:site" content="@nexora" />
 
         {/* PWA Tags */}
-        <meta name="application-name" content="PrepMaster" />
+        <meta name="application-name" content="Nexora" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta name="apple-mobile-web-app-title" content="PrepMaster" />
+        <meta name="apple-mobile-web-app-title" content="Nexora" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#FFE24D" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -82,37 +82,37 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "PrepMaster",
+              name: "Nexora",
               description:
-                "The smartest way to navigate the future of technology. Master Frontend, Backend, Mobile, and AI development with our cutting-edge learning platform.",
-              url: "https://prepmaster.dev",
-              logo: "https://prepmaster.dev/images/logo.svg",
+                "The smartest way to navigate the future of technology. Advanced AI-driven solutions for intelligent automation, data intelligence, cloud infrastructure, and edge computing.",
+              url: "https://nexora.ai",
+              logo: "https://nexora.ai/images/logo.svg",
               foundingDate: "2024",
               founders: [
                 {
                   "@type": "Person",
-                  name: "PrepMaster Team",
+                  name: "Nexora Team",
                 },
               ],
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+1-555-123-4567",
                 contactType: "customer service",
-                email: "hello@prepmaster.dev",
+                email: "contact@nexora.ai",
               },
               sameAs: [
-                "https://github.com/prepmaster",
-                "https://twitter.com/prepmaster",
-                "https://linkedin.com/company/prepmaster",
+                "https://github.com/nexora",
+                "https://twitter.com/nexora",
+                "https://linkedin.com/company/nexora",
               ],
               offers: {
-                "@type": "EducationalOccupationalCredential",
-                name: "Technology Skills Certification",
+                "@type": "Service",
+                name: "AI-Driven Technology Solutions",
                 description:
-                  "Comprehensive certification programs in Frontend, Backend, Mobile, and AI development",
+                  "Comprehensive AI automation, data intelligence, cloud infrastructure, and edge computing solutions for modern enterprises",
                 provider: {
                   "@type": "Organization",
-                  name: "PrepMaster",
+                  name: "Nexora",
                 },
               },
             }),
@@ -126,7 +126,7 @@ export default function RootLayout({ children }) {
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-primary text-black px-4 py-2 rounded-lg font-medium z-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium z-50"
         >
           Skip to main content
         </a>
@@ -138,9 +138,6 @@ export default function RootLayout({ children }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Prevent FOUC (Flash of Unstyled Content)
-              document.documentElement.classList.add('js-enabled');
-              
               // Performance monitoring
               if ('performance' in window && 'measure' in window.performance) {
                 window.addEventListener('load', function() {

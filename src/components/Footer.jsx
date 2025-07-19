@@ -14,12 +14,8 @@ import {
   Instagram,
   ArrowUpRight,
   Heart,
-  Code,
-  Server,
-  Smartphone,
-  Brain,
-  BookOpen,
   Users,
+  BookOpen,
   Award,
   Globe,
 } from "lucide-react";
@@ -30,22 +26,26 @@ const Footer = ({ className }) => {
 
   const footerSections = [
     {
-      title: "Specializations",
+      title: "Solutions",
       links: [
-        { name: "Frontend Development", href: "#frontend", available: true },
-        { name: "Backend Development", href: "#backend", comingSoon: true },
-        { name: "Mobile Development", href: "#mobile", comingSoon: true },
-        { name: "AI & Machine Learning", href: "#ai", comingSoon: true },
+        { name: "AI Automation", href: "#ai-automation", available: true },
+        {
+          name: "Data Intelligence",
+          href: "#data-intelligence",
+          available: true,
+        },
+        { name: "Cloud Infrastructure", href: "#cloud", available: true },
+        { name: "Edge Computing", href: "#edge", available: true },
       ],
     },
     {
-      title: "Platform",
+      title: "Technology",
       links: [
-        { name: "Features", href: "#features" },
-        { name: "Pricing", href: "#pricing" },
-        { name: "Resources", href: "#resources" },
+        { name: "Platform", href: "#platform" },
+        { name: "Security", href: "#security" },
+        { name: "Integrations", href: "#integrations" },
+        { name: "APIs", href: "#apis" },
         { name: "Documentation", href: "#docs" },
-        { name: "API", href: "#api" },
       ],
     },
     {
@@ -79,10 +79,10 @@ const Footer = ({ className }) => {
   ];
 
   const stats = [
-    { icon: Users, value: "10K+", label: "Active Learners" },
-    { icon: BookOpen, value: "500+", label: "Courses" },
-    { icon: Award, value: "50+", label: "Certifications" },
-    { icon: Globe, value: "120+", label: "Countries" },
+    { icon: Users, value: "1M+", label: "Active Users" },
+    { icon: BookOpen, value: "500+", label: "Solutions" },
+    { icon: Award, value: "99.9%", label: "Uptime" },
+    { icon: Globe, value: "50+", label: "Countries" },
   ];
 
   return (
@@ -91,7 +91,7 @@ const Footer = ({ className }) => {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
 
         {/* Grid Pattern */}
@@ -114,7 +114,7 @@ const Footer = ({ className }) => {
                     className="text-center group"
                   >
                     <div className="flex justify-center mb-2">
-                      <div className="p-2 rounded-lg bg-brand-primary/20 text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-all duration-300">
+                      <div className="p-2 rounded-lg bg-yellow-400/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
                         <IconComponent className="h-5 w-5" />
                       </div>
                     </div>
@@ -139,15 +139,27 @@ const Footer = ({ className }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="flex items-center space-x-3"
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-primary to-yellow-400 flex items-center justify-center">
-                  <span className="text-black font-bold text-xl">P</span>
+                <div className="relative">
+                  <div className="w-10 h-10 bg-white rounded-sm flex items-center justify-center transform rotate-45">
+                    <div className="w-8 h-8 bg-black rounded-sm transform -rotate-45 flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                        <path d="M2 17L12 22L22 17" />
+                        <path d="M2 12L12 17L22 12" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-white font-bold text-xl tracking-tight">
-                    PrepMaster
+                    Nexora®
                   </span>
                   <span className="text-gray-400 text-sm leading-none">
-                    Learn. Practice. Master.
+                    Navigate The Future
                   </span>
                 </div>
               </motion.div>
@@ -160,7 +172,7 @@ const Footer = ({ className }) => {
               >
                 Harness intelligent systems to optimize, predict, and
                 scale—seamlessly. The smartest way to navigate the future of
-                technology and advance your career.
+                technology and advance your organization.
               </motion.p>
 
               {/* Contact Info */}
@@ -170,15 +182,15 @@ const Footer = ({ className }) => {
                 transition={{ delay: 0.2 }}
                 className="space-y-3"
               >
-                <div className="flex items-center space-x-3 text-gray-300 hover:text-brand-primary transition-colors">
+                <div className="flex items-center space-x-3 text-gray-300 hover:text-yellow-400 transition-colors">
                   <Mail className="h-4 w-4" />
-                  <span className="text-sm">hello@prepmaster.dev</span>
+                  <span className="text-sm">contact@nexora.ai</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-300 hover:text-brand-primary transition-colors">
+                <div className="flex items-center space-x-3 text-gray-300 hover:text-yellow-400 transition-colors">
                   <Phone className="h-4 w-4" />
                   <span className="text-sm">+1 (555) 123-4567</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-300 hover:text-brand-primary transition-colors">
+                <div className="flex items-center space-x-3 text-gray-300 hover:text-yellow-400 transition-colors">
                   <MapPin className="h-4 w-4" />
                   <span className="text-sm">San Francisco, CA</span>
                 </div>
@@ -196,9 +208,9 @@ const Footer = ({ className }) => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm"
+                    className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm"
                   />
-                  <Button variant="brand" size="sm" className="font-medium">
+                  <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-sm px-4">
                     Subscribe
                   </Button>
                 </div>
@@ -223,25 +235,10 @@ const Footer = ({ className }) => {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className={cn(
-                            "text-sm transition-colors duration-200 flex items-center group",
-                            link.comingSoon
-                              ? "text-gray-500 cursor-not-allowed"
-                              : "text-gray-300 hover:text-brand-primary"
-                          )}
+                          className="text-sm text-gray-300 hover:text-yellow-400 transition-colors duration-200 flex items-center group"
                         >
                           <span className="flex-1">{link.name}</span>
-                          {link.comingSoon && (
-                            <span className="text-xs px-2 py-1 bg-gray-800 text-gray-400 rounded-full ml-2">
-                              Soon
-                            </span>
-                          )}
-                          {link.available && (
-                            <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-                          )}
-                          {!link.comingSoon && !link.available && (
-                            <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-                          )}
+                          <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
                         </a>
                       </li>
                     ))}
@@ -262,9 +259,9 @@ const Footer = ({ className }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="flex items-center space-x-2 text-gray-400 text-sm"
               >
-                <span>© {currentYear} PrepMaster. Made with</span>
+                <span>© {currentYear} Nexora. Made with</span>
                 <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-                <span>by the PrepMaster Team</span>
+                <span>by the Nexora Team</span>
               </motion.div>
 
               {/* Social Links */}
@@ -280,7 +277,7 @@ const Footer = ({ className }) => {
                     <a
                       key={social.name}
                       href={social.href}
-                      className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-brand-primary hover:text-black transition-all duration-300 group"
+                      className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-yellow-400 hover:text-black transition-all duration-300 group"
                       aria-label={social.name}
                     >
                       <IconComponent className="h-4 w-4 group-hover:scale-110 transition-transform" />
@@ -298,25 +295,25 @@ const Footer = ({ className }) => {
               >
                 <a
                   href="#privacy"
-                  className="hover:text-brand-primary transition-colors"
+                  className="hover:text-yellow-400 transition-colors"
                 >
                   Privacy
                 </a>
                 <a
                   href="#terms"
-                  className="hover:text-brand-primary transition-colors"
+                  className="hover:text-yellow-400 transition-colors"
                 >
                   Terms
                 </a>
                 <a
                   href="#cookies"
-                  className="hover:text-brand-primary transition-colors"
+                  className="hover:text-yellow-400 transition-colors"
                 >
                   Cookies
                 </a>
                 <a
                   href="#security"
-                  className="hover:text-brand-primary transition-colors"
+                  className="hover:text-yellow-400 transition-colors"
                 >
                   Security
                 </a>
@@ -332,7 +329,7 @@ const Footer = ({ className }) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-8 p-3 bg-brand-primary text-black rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-50 group"
+          className="fixed bottom-8 right-8 p-3 bg-yellow-400 text-black rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-50 group"
           aria-label="Scroll to top"
         >
           <ArrowUpRight className="h-5 w-5 rotate-45 group-hover:scale-110 transition-transform" />

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { SpecializationCard } from "@/components/ui/card";
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { Button } from "@/components/ui/button";
 import {
   Code,
@@ -14,153 +14,83 @@ import {
   Clock,
   Sparkles,
   Target,
-  TrendingUp,
-  Users,
+  Database,
+  Cpu,
+  Globe,
 } from "lucide-react";
-import { useGSAP, gsapAnimations, useScrollTrigger } from "@/hooks/useGSAP";
 import { cn } from "@/lib/utils";
 
 const SpecializationsSection = ({ className }) => {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const cardsRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const { animate } = useGSAP();
-
-  const specializations = [
+  const solutions = [
     {
-      id: "frontend",
-      title: "Frontend Development",
+      id: "ai-automation",
+      title: "AI-Powered Automation",
       description:
-        "Master modern frontend technologies and frameworks. Build responsive, interactive web applications.",
-      icon: <Code className="h-8 w-8" />,
-      technologies: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-      ],
-      featured: true,
-      comingSoon: false,
-      stats: {
-        courses: 25,
-        students: "5.2K",
-        rating: 4.9,
-      },
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      id: "backend",
-      title: "Backend Development",
-      description:
-        "Build scalable server-side applications and APIs. Master databases and cloud architecture.",
-      icon: <Server className="h-8 w-8" />,
-      technologies: ["Node.js", "Python", "PostgreSQL", "Docker", "AWS"],
-      featured: false,
-      comingSoon: true,
-      stats: {
-        courses: 30,
-        students: "Soon",
-        rating: "N/A",
-      },
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      id: "mobile",
-      title: "Mobile Development",
-      description:
-        "Create native and cross-platform mobile applications for iOS and Android.",
-      icon: <Smartphone className="h-8 w-8" />,
-      technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
-      featured: false,
-      comingSoon: true,
-      stats: {
-        courses: 20,
-        students: "Soon",
-        rating: "N/A",
-      },
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      id: "ai",
-      title: "AI & Machine Learning",
-      description:
-        "Dive into artificial intelligence and machine learning. Build intelligent systems.",
+        "Transform your workflows with intelligent automation that learns and adapts to your business needs.",
       icon: <Brain className="h-8 w-8" />,
-      technologies: ["Python", "TensorFlow", "PyTorch", "OpenAI", "LangChain"],
-      featured: false,
-      comingSoon: true,
-      stats: {
-        courses: 35,
-        students: "Soon",
-        rating: "N/A",
-      },
+      features: [
+        "Machine Learning Models",
+        "Process Optimization",
+        "Predictive Analytics",
+        "Smart Decision Making",
+      ],
+      color: "from-blue-500 to-cyan-500",
+      gradient: "bg-gradient-to-br from-blue-500/20 to-cyan-500/20",
+    },
+    {
+      id: "data-intelligence",
+      title: "Data Intelligence Platform",
+      description:
+        "Unlock insights from your data with our comprehensive analytics and visualization platform.",
+      icon: <Database className="h-8 w-8" />,
+      features: [
+        "Real-time Analytics",
+        "Custom Dashboards",
+        "Data Integration",
+        "Advanced Reporting",
+      ],
+      color: "from-green-500 to-emerald-500",
+      gradient: "bg-gradient-to-br from-green-500/20 to-emerald-500/20",
+    },
+    {
+      id: "cloud-infrastructure",
+      title: "Cloud Infrastructure",
+      description:
+        "Scale seamlessly with our robust cloud solutions designed for modern enterprises.",
+      icon: <Server className="h-8 w-8" />,
+      features: [
+        "Auto Scaling",
+        "High Availability",
+        "Security First",
+        "Cost Optimization",
+      ],
+      color: "from-purple-500 to-pink-500",
+      gradient: "bg-gradient-to-br from-purple-500/20 to-pink-500/20",
+    },
+    {
+      id: "edge-computing",
+      title: "Edge Computing Solutions",
+      description:
+        "Bring processing power closer to your data sources for lightning-fast response times.",
+      icon: <Cpu className="h-8 w-8" />,
+      features: [
+        "Low Latency",
+        "Real-time Processing",
+        "IoT Integration",
+        "Distributed Computing",
+      ],
       color: "from-orange-500 to-red-500",
+      gradient: "bg-gradient-to-br from-orange-500/20 to-red-500/20",
     },
   ];
-
-  // GSAP ScrollTrigger animation
-  const animationRef = useScrollTrigger(
-    () => {
-      const tl = animate.timeline();
-
-      tl.from(".spec-title", {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      })
-        .from(
-          ".spec-subtitle",
-          {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .from(
-          ".spec-card",
-          {
-            y: 100,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power2.out",
-          },
-          "-=0.3"
-        );
-
-      return tl;
-    },
-    {
-      trigger: sectionRef.current,
-      start: "top 80%",
-      end: "bottom 20%",
-    }
-  );
-
-  useEffect(() => {
-    if (isInView && sectionRef.current) {
-      // Additional floating animations for cards
-      animate(".spec-card", {
-        y: -10,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        stagger: 0.3,
-      });
-    }
-  }, [isInView, animate]);
 
   return (
     <section
       ref={sectionRef}
-      id="specializations"
+      id="solutions"
       className={cn(
         "relative py-20 lg:py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden",
         className
@@ -168,173 +98,113 @@ const SpecializationsSection = ({ className }) => {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-brand-primary/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <motion.div
-            ref={titleRef}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <div className="spec-title">
-              <span className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 text-sm text-brand-primary font-medium mb-6">
-                <Sparkles className="h-4 w-4" />
-                <span>Our Specializations</span>
-              </span>
+            <span className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 text-sm text-yellow-400 font-medium mb-6">
+              <Sparkles className="h-4 w-4" />
+              <span>Our Solutions</span>
+            </span>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Master The Skills That
-                <br />
-                <span className="text-gradient">Shape Tomorrow</span>
-              </h2>
-            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Intelligent Solutions That
+              <br />
+              <span className="text-gradient">Drive Results</span>
+            </h2>
 
-            <p className="spec-subtitle text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Choose your path and accelerate your career with our
-              comprehensive, industry-aligned specialization tracks designed by
-              experts.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Discover how our cutting-edge technology solutions can transform
+              your business and unlock new possibilities for growth and
+              innovation.
             </p>
           </motion.div>
         </div>
 
-        {/* Specialization Cards */}
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16"
-        >
-          {specializations.map((spec, index) => (
-            <motion.div
-              key={spec.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="spec-card"
-            >
-              <SpecializationCard
-                variant="glass"
-                className={cn(
-                  "group relative overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500",
-                  spec.featured &&
-                    "ring-2 ring-brand-primary/50 border-brand-primary/30",
-                  !spec.comingSoon && "hover:scale-105 cursor-pointer"
+        {/* ScrollStack Solutions */}
+        <div className="h-screen">
+          <ScrollStack
+            itemDistance={150}
+            itemScale={0.05}
+            itemStackDistance={40}
+            stackPosition="25%"
+            scaleEndPosition="15%"
+            baseScale={0.9}
+            rotationAmount={2}
+            blurAmount={1}
+          >
+            {solutions.map((solution, index) => (
+              <ScrollStackItem
+                key={solution.id}
+                itemClassName={cn(
+                  "glass border border-white/10 group hover:border-white/30 transition-all duration-500",
+                  solution.gradient
                 )}
-                comingSoon={spec.comingSoon}
-                featured={spec.featured}
               >
-                {/* Gradient Overlay */}
-                <div
-                  className={cn(
-                    "absolute inset-0 bg-gradient-to-br opacity-10 group-hover:opacity-20 transition-opacity duration-500",
-                    spec.color
-                  )}
-                />
-
-                <div className="relative z-10 p-6 lg:p-8">
+                <div className="relative z-10 h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6">
                     <div
                       className={cn(
-                        "p-3 rounded-xl bg-gradient-to-br transition-all duration-300 group-hover:scale-110",
-                        spec.color
+                        "p-4 rounded-xl bg-gradient-to-br transition-all duration-300 group-hover:scale-110",
+                        solution.color
                       )}
                     >
-                      <div className="text-white">{spec.icon}</div>
+                      <div className="text-white">{solution.icon}</div>
                     </div>
 
-                    {spec.featured && (
-                      <div className="flex items-center space-x-2 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
-                        <CheckCircle className="h-3 w-3" />
-                        <span>Available Now</span>
-                      </div>
-                    )}
-
-                    {spec.comingSoon && (
-                      <div className="flex items-center space-x-2 px-3 py-1 bg-brand-primary text-black text-xs font-bold rounded-full">
-                        <Clock className="h-3 w-3" />
-                        <span>Coming Soon</span>
-                      </div>
-                    )}
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
+                      <CheckCircle className="h-3 w-3" />
+                      <span>Available Now</span>
+                    </div>
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-4 mb-6">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-primary transition-colors duration-300">
-                      {spec.title}
-                    </h3>
+                  <div className="flex-1 space-y-6">
+                    <div>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 mb-4">
+                        {solution.title}
+                      </h3>
 
-                    <p className="text-gray-300 leading-relaxed">
-                      {spec.description}
-                    </p>
+                      <p className="text-gray-300 leading-relaxed text-lg">
+                        {solution.description}
+                      </p>
+                    </div>
 
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2">
-                      {spec.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-white/10 text-white text-xs rounded-full border border-white/20"
+                    {/* Features */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {solution.features.map((feature) => (
+                        <div
+                          key={feature}
+                          className="flex items-center space-x-2 text-sm text-gray-300"
                         >
-                          {tech}
-                        </span>
+                          <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+                          <span>{feature}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-t border-white/10">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-white">
-                        {spec.stats.courses}
-                      </div>
-                      <div className="text-xs text-gray-400">Courses</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-white">
-                        {spec.stats.students}
-                      </div>
-                      <div className="text-xs text-gray-400">Students</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-white">
-                        {spec.stats.rating}
-                      </div>
-                      <div className="text-xs text-gray-400">Rating</div>
-                    </div>
-                  </div>
-
                   {/* CTA */}
-                  <div className="pt-4">
-                    {spec.featured ? (
-                      <Button
-                        variant="brand"
-                        className="w-full font-bold group"
-                        icon={
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        }
-                        iconPosition="right"
-                      >
-                        Start Learning Now
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="brand-outline"
-                        className="w-full font-medium opacity-50 cursor-not-allowed"
-                        disabled
-                      >
-                        Notify Me When Available
-                      </Button>
-                    )}
+                  <div className="mt-8">
+                    <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold group w-full lg:w-auto px-8">
+                      Explore Solution
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
                   </div>
                 </div>
-              </SpecializationCard>
-            </motion.div>
-          ))}
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
         </div>
 
         {/* Call to Action */}
@@ -342,34 +212,29 @@ const SpecializationsSection = ({ className }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center"
+          className="text-center mt-20"
         >
           <div className="max-w-2xl mx-auto space-y-6">
             <h3 className="text-2xl lg:text-3xl font-bold text-white">
-              Ready to Level Up Your Skills?
+              Ready to Transform Your Business?
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              Join thousands of developers who are already mastering the future
-              of technology
+              Join forward-thinking organizations who are already leveraging
+              intelligent systems to drive innovation and growth.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="brand"
-                size="xl"
-                className="font-bold group"
-                icon={<Target className="h-5 w-5" />}
-              >
-                View All Courses
+              <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-3 rounded-lg">
+                <Target className="h-5 w-5 mr-2" />
+                Get Started Today
               </Button>
 
               <Button
-                variant="brand-glass"
-                size="xl"
-                className="font-medium group"
-                icon={<Users className="h-5 w-5" />}
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-3 rounded-lg"
               >
-                Join Community
+                <Globe className="h-5 w-5 mr-2" />
+                Schedule Demo
               </Button>
             </div>
           </div>

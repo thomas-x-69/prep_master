@@ -51,12 +51,26 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom PrepMaster brand colors
+        // Custom Nexora brand colors
         brand: {
-          primary: "#FFE24D", // Yellow accent like in the image
+          primary: "#FFE24D", // Yellow accent
           secondary: "#1A1A1A", // Dark background
           accent: "#FFFFFF", // White text
           muted: "#888888", // Gray text
+        },
+        // Enhanced yellow palette
+        yellow: {
+          50: "#fefce8",
+          100: "#fef9c3",
+          200: "#fef08a",
+          300: "#fde047",
+          400: "#FFE24D", // Main brand color
+          500: "#eab308",
+          600: "#ca8a04",
+          700: "#a16207",
+          800: "#854d0e",
+          900: "#713f12",
+          950: "#422006",
         },
       },
       borderRadius: {
@@ -97,6 +111,18 @@ module.exports = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(255, 226, 77, 0.4)" },
           "50%": { boxShadow: "0 0 40px rgba(255, 226, 77, 0.8)" },
         },
+        noise: {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "10%": { transform: "translate(-5%, -10%)" },
+          "20%": { transform: "translate(-10%, 5%)" },
+          "30%": { transform: "translate(5%, -15%)" },
+          "40%": { transform: "translate(-5%, 15%)" },
+          "50%": { transform: "translate(-10%, 5%)" },
+          "60%": { transform: "translate(15%, 0%)" },
+          "70%": { transform: "translate(0%, 15%)" },
+          "80%": { transform: "translate(-15%, 10%)" },
+          "90%": { transform: "translate(10%, 5%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -107,11 +133,14 @@ module.exports = {
         "scale-in": "scale-in 0.5s ease-out",
         float: "float 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        noise: "noise 8s steps(10) infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "noise-pattern":
+          "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgICAgPGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjEiIGlhZGQvbGVuZ3RoPiIyMDAiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjAzIi8+Cjwvc3ZnPgo=')",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
@@ -121,6 +150,9 @@ module.exports = {
         18: "4.5rem",
         88: "22rem",
         128: "32rem",
+      },
+      blur: {
+        xs: "2px",
       },
     },
   },
