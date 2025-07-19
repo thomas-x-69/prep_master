@@ -13,12 +13,14 @@ const nextConfig = {
     formats: ["image/webp", "image/avif"],
   },
   webpack: (config, { dev, isServer }) => {
-    // GSAP configuration for server-side rendering
-    if (!isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        "gsap/dist/gsap": "gsap/dist/gsap.js",
-      };
+    // Handle GSAP for SSR
+    config.externals = config.externals || [];
+
+    if (isServer) {
+      config.externals.push({
+        gsap: "gsap",
+        "gsap/ScrollTrigger": "gsap/ScrollTrigger",
+      });
     }
 
     // Optimize video files

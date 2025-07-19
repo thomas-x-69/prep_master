@@ -47,9 +47,7 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -83,6 +81,19 @@
     background: rgba(255, 226, 77, 0.9);
   }
 
+  /* Improved selection styles */
+  ::selection {
+    background: rgba(255, 226, 77, 0.3);
+    color: #1a1a1a;
+  }
+
+  ::-moz-selection {
+    background: rgba(255, 226, 77, 0.3);
+    color: #1a1a1a;
+  }
+}
+
+@layer components {
   /* Glass morphism effect */
   .glass {
     background: rgba(255, 255, 255, 0.05);
@@ -122,6 +133,58 @@
     background-clip: text;
   }
 
+  /* Component-specific styles */
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .text-shadow {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .backdrop-blur-custom {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Noise effect styles */
+  .noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: 1;
+  }
+
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
   /* Video optimization */
   video {
     object-fit: cover;
@@ -174,69 +237,6 @@
   /* Parallax scrolling */
   .parallax {
     transform-style: preserve-3d;
-  }
-
-  /* Focus styles for accessibility */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2;
-  }
-
-  /* Hide scrollbar but keep functionality */
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Improved selection styles */
-  ::selection {
-    background: rgba(255, 226, 77, 0.3);
-    color: #1a1a1a;
-  }
-
-  ::-moz-selection {
-    background: rgba(255, 226, 77, 0.3);
-    color: #1a1a1a;
-  }
-}
-
-@layer components {
-  /* Component-specific styles */
-  .hero-gradient {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
-  }
-
-  .text-shadow {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .backdrop-blur-custom {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-
-  /* Noise effect styles */
-  .noise-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.03;
-    z-index: 1;
   }
 }
 

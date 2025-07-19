@@ -1,5 +1,5 @@
 {
-  "name": "nexora",
+  "name": "prepmaster",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -25,11 +25,10 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^3.4.0"
   }
 }
